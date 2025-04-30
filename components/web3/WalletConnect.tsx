@@ -1,18 +1,26 @@
 import Button from '@/components/button';
 import { EventCategory, EventName } from '@/constants/event';
 import { downloadClickAtom } from '@/store/web3/state';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactGA from 'react-ga4';
 import { useRecoilState } from 'recoil';
 import { useConnect } from 'wagmi';
 import { WalletType } from './WalletPopover';
+import { EmailAuthForm } from '../auth/EmailAuthForm';
 ReactGA.event({ category: EventCategory.Global, action: EventName.ToInvitation });
 
 type WalletConnectProps = {
   setWalletType?: (type: WalletType) => void;
 };
+type AuthMode = 'wallet' | 'email';
+
 
 function WalletConnect({ setWalletType }: WalletConnectProps) {
+  const [authMode, setAuthMode] = useState<AuthMode>('wallet');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const { connect, connectors } = useConnect({
     onSuccess: () => {
       ReactGA.event({ category: EventCategory.Global, action: EventName.ConnectResult, label: 'success' });
@@ -39,6 +47,40 @@ function WalletConnect({ setWalletType }: WalletConnectProps) {
     ReactGA.event({ category: EventCategory.Global, action: EventName.ConnectWallet, label: type });
     connectWallet(connectors[index]);
   };
+  const handleEmailLogin = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const response = await fetch('/api/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password}),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Login failed');
+      ReactGA.event({ category: EventCategory.Global, action: EventName.LoginSuccess });
+      console.log('Login successful', data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message || 'Login Failed');
+      } else {
+        setError('An unexpected error occurred');
+      }
+      ReactGA.event({ category: EventCategory.Global, action: EventName.LoginFailed });
+    } finally {
+      setLoading(false);
+    }
+  };
+  if (authMode === 'email') {
+    return (
+      <EmailAuthForm 
+        onBack={() => setAuthMode('wallet')}
+        onSuccess={handleEmailLogin} 
+      />
+    );
+  }
 
   return (
     <div className="flex-center-y p-6">
@@ -77,6 +119,13 @@ function WalletConnect({ setWalletType }: WalletConnectProps) {
           click here
         </span>
       </div>
+      
+      <button
+        className="text-blue hover:underline text-sm mt-4"
+        onClick={() => setAuthMode('email')}
+      >
+        Or sign in with email
+      </button>
     </div>
   );
 }
