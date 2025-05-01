@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import { useAccount } from 'wagmi';
@@ -22,6 +22,7 @@ import { gamerGamesAtom, gamerInfoAtom } from '@/store/gamer/state';
 import GamerClaimSuccess from '@/components/dialog/GamerClaimSuccess';
 import { InviteRecordDialog } from '@/components/dialog/InviteRecordDialog';
 import PermissionSettingDialog from '@/components/dialog/PermissionSettingDialog';
+import { EmailAuthForm } from '@/components/auth/EmailAuthForm';
 
 export default function Gamer() {
   const router = useRouter();
@@ -30,6 +31,21 @@ export default function Gamer() {
   const gamerInfo = useRecoilValue(gamerInfoAtom);
   const gamerGames = useRecoilValue(gamerGamesAtom);
   const [, invitation] = useRecoilValue(invitationCountAtom);
+  const [isEmailAuthenticated, setIsEmailAuthenticated] = useState(false);
+  if (!isEmailAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0e0e0e] p-4">
+        <EmailAuthForm
+          onBack={() => window.history.back()} 
+          onSuccess={() => setIsEmailAuthenticated(true)} 
+
+        />
+
+      </div>
+
+    );
+
+  }
   useGamerInfo(address);
 
   const badge = useGamerBadgeLoad(gamerInfo);
@@ -88,6 +104,46 @@ export default function Gamer() {
                         {gamerInfo.nft_claim === GenesisClaim.Claimed && (
                           <>
                             <div className="relative aspect-square w-full max-w-[420px]">
+                              {badge.isLoading && (
+                                <div className="absolute left-1/2 top-1/2 -z-10 h-[58px] w-[58px] -translate-x-1/2 opacity-60">
+                                  <Image className="animate-spin" src="/svg/loading.svg" width={58} height={58} alt="loading" />
+                                </div>
+                              )}
+                              <div
+                                className="aspect-square max-w-[420px] bg-cover"
+                                style={{ backgroundImage: `url(${GAMER_BADGES[gamerInfo.nft_level!].asset})` }}
+                              />
+                            </div>
+                            <Button type="bordered" className="mt-9 w-[260px] sm:mt-4" onClick={() => openLink(GALXE_LIST)}>
+                              My NFT at Galxe
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    ) : (
+                      <h4 className="text-center text-xl font-medium text-red">AYBABTU</h4>
+                    )}
+                  </div>
+                </div>
+                <p className="absolute bottom-8 z-10 w-full text-center text-sm text-gray sm:static sm:py-2">
+                  The airdrop is in collaboration with and powered by&nbsp;
+                  <a className="text-blue" href="https://galxe.com/P12" target="_blank">
+                    Galxe
+                  </a>
+                </p>
+              </div>
+              <div className="basis-1/2 p-4 md:basis-auto 2xl:p-8">
+                <h2 className="mt-8 text-[30px] font-medium md:mt-2">
+                  {gamerInfo?.credential ? GAMER_BADGES[gamerInfo.nft_level!].title : 'P12 | Project Twelve | Genesis'}
+                </h2>
+                <h3 className="mt-9 text-xl font-medium md:mt-4">Genesis Soul-Bound NFT</h3>
+                <p className="mt-2 text-sm text-gray">
+                  Birthday:&nbsp;{gamerInfo?.birthday ? dayjs(gamerInfo.birthday).format('YYYY/MM/DD') : '--'}
+                </p>
+                <div className="gradient__box mt-9 px-[30px] py-6 md:mt-4">
+                  <p>Amount of tokens from this Steam account</p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <p onClick={handleClaimedRoadmap} className="cursor-pointer font-ddin text-[48px] font-bold">
                               {badge.isLoading && (
                                 <div className="absolute left-1/2 top-1/2 -z-10 h-[58px] w-[58px] -translate-x-1/2 opacity-60">
                                   <Image className="animate-spin" src="/svg/loading.svg" width={58} height={58} alt="loading" />
