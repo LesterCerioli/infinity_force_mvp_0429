@@ -1,3 +1,4 @@
+import { EmailAuthForm } from '@/components/auth/EmailAuthForm';
 import ActivityTab from '@/components/dashboard/ActivityTab';
 import Arcana from '@/components/dashboard/Arcana';
 import Developer from '@/components/dashboard/Developer';
@@ -7,11 +8,28 @@ import SteamGamerSBT from '@/components/dashboard/sbt/SteamGamerSBT';
 import { usePageTabSelected } from '@/hooks/dashboard/usePageTabSelected';
 import { userPowerLevelAtom } from '@/store/dashboard/state';
 import { digitalFormat } from '@/utils/format';
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 export default function Dashboard() {
   const { arcanaPL, steamGamerPL, steamDeveloperPL } = useRecoilValue(userPowerLevelAtom);
   const { index, onSelect } = usePageTabSelected();
+  const [isEmailAuthenticated, setIsEmailAuthenticated] = useState(false);
+
+  if (!isEmailAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0e0e0e] p-4">
+        <EmailAuthForm
+          onBack={() => window.history.back()} 
+          onSuccess={() => setIsEmailAuthenticated(true)} 
+
+        />
+
+      </div>
+
+    );
+
+  }
 
   return (
     <div className="mt-4">

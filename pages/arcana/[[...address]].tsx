@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { useAccount, useNetwork } from 'wagmi';
 import { useRouter } from 'next/router';
@@ -23,6 +23,7 @@ import SwiperInviteVote from '../../components/arcana/SwiperInviteVote';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { EmailAuthForm } from '@/components/auth/EmailAuthForm';
 
 export default function Arcana() {
   const { address } = useAccount();
@@ -35,6 +36,7 @@ export default function Arcana() {
   const intersectionRef = useRef(null);
   const intersection = useIntersection(intersectionRef, { threshold: 0.8 });
   const { data } = useArcanaVotes(originAddress ?? address);
+  const [isEmailAuthenticated, setIsEmailAuthenticated] = useState(false);
 
   useEffect(() => {
     if (!intersection) return;
@@ -56,6 +58,19 @@ export default function Arcana() {
       setObserver(true);
     }
   }, [query, setObserver, setOriginAddress]);
+
+  if (!isEmailAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0e0e0e] p-4">
+        <EmailAuthForm
+          onBack={() => window.history.back()} 
+          onSuccess={() => setIsEmailAuthenticated(true)} 
+
+        />
+
+      </div>
+    );
+  }
 
   return (
     <>

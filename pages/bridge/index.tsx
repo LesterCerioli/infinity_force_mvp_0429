@@ -1,8 +1,25 @@
 import { motion } from 'framer-motion';
 import ReactGA from 'react-ga4';
 import BridgeSwitch from '../../components/bridge/BridgeSwitch';
+import { useState } from 'react';
+import { EmailAuthForm } from '@/components/auth/EmailAuthForm';
 
 export default function Bridge() {
+  const [isEmailAuthenticated, setIsEmailAuthenticated] = useState(false);
+  if (!isEmailAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0e0e0e] p-4">
+        <EmailAuthForm
+          onBack={() => window.history.back()} 
+          onSuccess={() => setIsEmailAuthenticated(true)} 
+
+        />
+
+      </div>
+
+    );
+
+  }
   return (
     <div className="mt-6">
       <div className="h-9 rounded-lg bg-[#4383FF4D] px-4 text-sm/9 font-medium backdrop-blur-lg">

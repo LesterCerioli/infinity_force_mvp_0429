@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -12,6 +12,7 @@ import { claimGroupSelector, tabSelectAtom } from '../../store/developer/state';
 import { GenesisClaim } from '../../constants';
 import { useAccount } from 'wagmi';
 import { useDeveloperInfo } from '@/hooks/developer';
+import { EmailAuthForm } from '@/components/auth/EmailAuthForm';
 
 export default function Developer() {
   const { address } = useAccount();
@@ -20,6 +21,21 @@ export default function Developer() {
   const claimGroup = useRecoilValue(claimGroupSelector);
   const allUnclaimed = useMemo(() => [...claimGroup[GenesisClaim.Pending], ...claimGroup[GenesisClaim.Unclaimed]], [claimGroup]);
   const [selectedTab, setSelectedTab] = useRecoilState(tabSelectAtom);
+  const [isEmailAuthenticated, setIsEmailAuthenticated] = useState(false);
+
+  if (!isEmailAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0e0e0e] p-4">
+        <EmailAuthForm
+          onBack={() => window.history.back()} 
+          onSuccess={() => setIsEmailAuthenticated(true)} 
+
+        />
+      </div>
+
+    );
+
+  }
 
   return (
     <div className="mt-8">

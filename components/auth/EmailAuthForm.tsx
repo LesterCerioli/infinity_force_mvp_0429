@@ -3,6 +3,7 @@ import { EventCategory, EventName } from '@/constants/event';
 import { authStyles } from './styles';
 import React, { useState, FormEvent } from 'react';
 import ReactGA from 'react-ga4';
+import { ForgotPasswordForm } from '../authCompoents/ForgotPasswordForm/ForgotPasswordForm';
 
 type EmailAuthFormProps = {
   onBack: () => void;
@@ -14,6 +15,7 @@ export function EmailAuthForm({ onBack, onSuccess }: EmailAuthFormProps) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -49,10 +51,18 @@ export function EmailAuthForm({ onBack, onSuccess }: EmailAuthFormProps) {
     const syntheticEvent = { preventDefault: () => {} } as FormEvent;
     handleSubmit(syntheticEvent);
   };
+  if (showForgotPassword) {
+    return (
+      <ForgotPasswordForm
+      onBack={() => setShowForgotPassword(false)} 
+
+      />
+    );
+  }
 
   return (
     <div className={authStyles.container}>
-      <h4 className={authStyles.title}>Email Authentication</h4>
+      <h4 className={authStyles.title}>System Authentication</h4>
       <form onSubmit={handleSubmit} className={authStyles.formContainer}>
         <input
           type="email"
