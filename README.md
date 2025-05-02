@@ -12,6 +12,9 @@ billion hours on Steam in 2021.
 
 ![readme_01](./docs/readme_01.png)
 
+![image](https://github.com/user-attachments/assets/27e214a2-5752-4197-9638-0feb1b734c6f)
+
+
 We believe it will be a good means to identify game lovers with the help of Steam data, and we want to give tributes to
 all Steam gamers and developers!
 
@@ -39,6 +42,10 @@ will be rewarded with tributes according to the following rules:
 1. Each verified game will get 1 developer-specific NFT.
 2. The NFT has 4 categories: legendary, epic, rare, and uncommon.
 3. The amount of tokens that developers can claim is based on their games' reviews and publish date.
+
+
+![image](https://github.com/user-attachments/assets/26d08716-914a-48e3-82b8-fe986fe339d9)
+
 
 ## For Gamers
 
