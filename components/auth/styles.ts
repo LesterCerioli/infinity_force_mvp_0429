@@ -3,7 +3,7 @@ export const authStyles = {
     container: "flex flex-col items-center justify-center p-6",
     formContainer: "w-full max-w-md space-y-4 mt-4 px-4",
         
-    title: "text-xl font-medium text-gray-900 dark:text-white",
+    title: "text-xl font-medium text-white",
         
     walletGrid: "mt-6 grid grid-cols-2 gap-3 px-4 w-full",
     walletButton: "flex items-center justify-center gap-2 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors",

@@ -3,7 +3,7 @@ import { EventCategory, EventName } from '@/constants/event';
 import { authStyles } from './styles';
 import React, { useState, FormEvent } from 'react';
 import ReactGA from 'react-ga4';
-import { ForgotPasswordForm } from '../authCompoents/ForgotPasswordForm/ForgotPasswordForm';
+import { ForgotPasswordForm } from '../authComponents/ForgotPasswordForm/ForgotPasswordForm';
 
 type EmailAuthFormProps = {
   onBack: () => void;
