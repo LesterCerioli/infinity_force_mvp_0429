@@ -72,6 +72,16 @@ will be rewarded with tributes according to the following rules:
 2. The NFT has 5 categories: legendary, epic, rare, uncommon and common.
 3. The amount of tokens that gamers can claim is based on various relevant metrics.
 
+## Desired workflow:
+
+![image](https://github.com/user-attachments/assets/3863f2a6-9433-4d37-9af7-1f51d7196b67)
+
+## Progressive Migration:
+
+![image](https://github.com/user-attachments/assets/024bde44-54f4-42a7-9f96-cd3e03ead6b3)
+
+
+
 ## Result Files
 
 We export the results to a public Google
