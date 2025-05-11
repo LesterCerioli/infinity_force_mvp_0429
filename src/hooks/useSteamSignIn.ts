@@ -6,7 +6,7 @@ import { isMobile } from 'react-device-detect';
 import ReactGA from 'react-ga4';
 import { useEvent } from 'react-use';
 import { useAccount } from 'wagmi';
-import { STORAGE_KEY } from '../src/lib/constants';
+import { STORAGE_KEY } from '../constants';
 import { getLocalStorage } from '../utils/storage';
 import { useBindSteamAccount } from './gamer';
 
