@@ -1,6 +1,6 @@
 const express = require('express');
 const { processPayment, paytmResponse, getPaymentStatus } = require('../controllers/paymentController');
-const { isAuthenticatedUser } = require('../middlewares/user_actions/auth');
+const { isAuthenticatedUser } = require('../../src/middlewares/user_actions/auth');
 
 const router = express.Router();
 

@@ -3,7 +3,7 @@ import { Abi, WalletClient } from 'viem';
 import { getContract } from '../utils/getContract';
 import { babtABI, collabABI } from '../abis';
 import { Address, useContractRead, useNetwork, usePublicClient, useWalletClient } from 'wagmi';
-import { BABT_ADDRESSES, COLLAB_ADDRESS } from '../src/lib/constants/addresses';
+import { BABT_ADDRESSES, COLLAB_ADDRESS } from '../../lib/constants/addresses';
 
 export function useContract<TAbi extends Abi>(address?: Address, abi?: TAbi, chainId?: number) {
   const publicClient = usePublicClient({ chainId });

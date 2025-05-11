@@ -10,7 +10,7 @@ import { shortenSteamId } from '../../../../utils';
 import Loading from '../../../../components/loading';
 import { GAMER_BADGES, GenesisClaim } from '../../../lib/constants';
 import SteamValue from '../../../../components/gamer/SteamValue';
-import { useGamerBadgeLoad } from '../../../../hooks/useBadgeLoad';
+import { useGamerBadgeLoad } from '../../../extra/hooks/useBadgeLoad';
 import { fetchGamerGames, fetchGamerInfo } from '../../../lib/api';
 import PosterCanvas from '../../../../components/poster/PosterCanvas';
 import GamerGameItem from '../../../../components/gamer/GamerGameItem';

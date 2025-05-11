@@ -5,9 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import { openLink } from '../../../../utils';
 import { GAMER_BADGES } from '../../../lib/constants';
 import Reward from '../../../../components/qatar/Reward';
-import useExternal from '../../../../hooks/useExternal';
+import useExternal from '../../../extra/hooks/useExternal';
 import { fetchWorldCupUserInfo } from '../../../lib/api';
-import { useIsMounted } from '../../../../hooks/useIsMounted';
+import { useIsMounted } from '../../../extra/hooks/useIsMounted';
 import HolderItem from '../../../../components/qatar/HolderItem';
 import Prediction from '../../../../components/qatar/Prediction';
 

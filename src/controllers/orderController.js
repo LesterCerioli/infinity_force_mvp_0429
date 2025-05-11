@@ -1,9 +1,9 @@
 const axios = require('axios')
-const asyncErrorHandler = require('../middlewares/helpers/asyncErrorHandler');
+const asyncErrorHandler = require('../../backend/middlewares/helpers/asyncErrorHandler');
 const Order = require('../models/orderModel');
 const Product = require('../models/productModel');
-const ErrorHandler = require('../utils/errorHandler');
-const sendEmail = require('../utils/sendEmail');
+const ErrorHandler = require('../../backend/utils/errorHandler');
+const sendEmail = require('../../backend/utils/sendEmail');
 
 // Create New Order
 exports.newOrder = asyncErrorHandler(async (req, res, next) => {

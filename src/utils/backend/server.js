@@ -1,5 +1,5 @@
-const app = require('./app');
-const connectDatabase = require('./config/database');
+const app = require('../../../backend/app');
+const connectDatabase = require('../../../backend/config/database');
 const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 3099;
 
