@@ -2,12 +2,11 @@
   "name": "airdrop-interface",
   "version": "0.8.0",
   "license": "AGPL-3.0",
-  "author": "Lincheng <1139489076@qq.com>",
-  "description": "P12 Genesis Soul-Bound NFT Airdrop",
+  "author": "Lucas Technology Service <cerioli728@gmail.com>",
+  "description": "High Platform",
   "keywords": [
-    "P12",
-    "Genesis",
-    "Airdrop"
+    "High",    "Genesis",
+    "Platform"
   ],
   "scripts": {
     "dev": "concurrently \"node backend/server.js\" \"next dev\"",
