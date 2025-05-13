@@ -1,91 +1,36 @@
-<p align="center">
-    <img alt="p12_logo" src="./docs/p12_logo.png" />
-</p>
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-# P12 Airdrop
+## Getting Started
 
-Project Twelve is a GameFi ecosystem with sustainable economies. We believe that "gaming" is an integral part of the
-Metaverse, where gamers and developers are the two most important components.
+First, run the development server:
 
-Steam, as a premier gaming platform, is the largest digital distribution platform for PC gaming; players spent almost 38
-billion hours on Steam in 2021.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-![readme_01](./docs/readme_01.png)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-![image](https://github.com/user-attachments/assets/27e214a2-5752-4197-9638-0feb1b734c6f)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-We believe it will be a good means to identify game lovers with the help of Steam data, and we want to give tributes to
-all Steam gamers and developers!
+## Learn More
 
-## For Developers
+To learn more about Next.js, take a look at the following resources:
 
-### Airdrop Tributes
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-1. Developer-specific NFT.
-2. P12 tokens.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Mechanism
+## Deploy on Vercel
 
-Through the Steam API, we get a list of all Steam games with their app ID, names, reviews, etc., and we use the
-signature method to determine the ownership between developers and games.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Here are the rules and the results:
-
-Steam game developers who:
-
-1. Own at least 1 game on Steam (except DLC).
-2. Complete the authentication steps on P12 Airdrop website.
-
-will be rewarded with tributes according to the following rules:
-
-1. Each verified game will get 1 developer-specific NFT.
-2. The NFT has 4 categories: legendary, epic, rare, and uncommon.
-3. The amount of tokens that developers can claim is based on their games' reviews and publish date.
-
-
-![image](https://github.com/user-attachments/assets/26d08716-914a-48e3-82b8-fe986fe339d9)
-
-
-## For Gamers
-
-### Airdrop Tributes
-
-1. Gamer-specific NFT.
-2. P12 tokens.
-
-### Mechanism
-
-Sign in with a Steam account and set "My profile" to "Public," we get the account data including the avatar, a games
-array, total playtime, etc., and the gaming experience will determine the rewards.
-
-Here are the rules and the results:
-
-Steam gamers who:
-
-1. Own a Steam account.
-2. Complete the authentication steps on P12 Airdrop website.
-
-will be rewarded with tributes according to the following rules:
-
-1. Each Steam account will get 1 Gamer specific NFT.
-2. The NFT has 5 categories: legendary, epic, rare, uncommon and common.
-3. The amount of tokens that gamers can claim is based on various relevant metrics.
-
-## Desired workflow:
-
-![image](https://github.com/user-attachments/assets/3863f2a6-9433-4d37-9af7-1f51d7196b67)
-
-## Progressive Migration:
-
-![image](https://github.com/user-attachments/assets/024bde44-54f4-42a7-9f96-cd3e03ead6b3)
-
-
-
-## Result Files
-
-We export the results to a public Google
-folder [here](https://drive.google.com/drive/folders/1jKYEUQvfKuJcV84pWSdH96XO05HC4zPs).
-
-Game data is available and complete, while binding relationships between the game and address will be continuously
-updated.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
